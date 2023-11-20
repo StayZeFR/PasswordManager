@@ -2,20 +2,23 @@ package fr.stayze.passwordmanager;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Window {
 
-    private Stage _stage;
-    private FXMLLoader _loader;
+    private final Stage _stage;
     private Scene _scene;
     private String _title;
 
     public Window(Stage stage) {
         this._stage = stage;
-        this._loader = new FXMLLoader();
+
+        Image logo = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/stayze/passwordmanager/resources/logo.png")));
+        this._stage.getIcons().add(logo);
     }
 
     /**
@@ -25,15 +28,6 @@ public class Window {
      */
     public Stage getStage() {
         return this._stage;
-    }
-
-    /**
-     * Get the loader
-     *
-     * @return FXMLLoader
-     */
-    public FXMLLoader getLoader() {
-        return this._loader;
     }
 
     /**
@@ -63,10 +57,25 @@ public class Window {
         this._title = title;
     }
 
+    /**
+     * Set the resizable of the window
+     *
+     * @param resizable
+     */
+    public void setResizable(boolean resizable) {
+        this._stage.setResizable(resizable);
+    }
+
+    /**
+     * Show the window
+     *
+     * @throws IOException
+     */
     public void show() throws IOException {
         if (this._scene != null) {
             this._stage.setTitle(this._title);
             this._stage.setScene(this._scene);
+            this._stage.centerOnScreen();
             this._stage.show();
         }
     }

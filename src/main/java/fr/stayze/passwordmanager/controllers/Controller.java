@@ -2,6 +2,7 @@ package fr.stayze.passwordmanager.controllers;
 
 import fr.stayze.passwordmanager.PasswordManager;
 import fr.stayze.passwordmanager.Window;
+import fr.stayze.passwordmanager.views.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,36 +12,43 @@ import java.util.Objects;
 
 public abstract class Controller {
 
-    Window _window;
-    private FXMLLoader _loader;
+    protected final Window _window;
 
     protected Controller() {
         this._window = PasswordManager.getWindow();
-        this._loader = this._window.getLoader();
     }
 
     /**
      * Render a scene from a resource
      *
      * @param resource
-     * @param h
      * @param w
-     * @return Scene
+     * @param h
      */
-    protected void render(String resource, int h, int w) {
+    protected void render(String resource, int w, int h) {
         try {
-            this._loader.setLocation(getClass().getResource("/fr/stayze/passwordmanager/views/" + resource));
-            Parent root = this._loader.load();
-            this._window.setScene(new Scene(root, h, w));
+            this._window.setScene(View.buildScene(resource, w, h));
             this._window.show();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 
-    protected void render(String resource, String css, int h, int w) {
-        this.render(resource, h, w);
-        this._window.getScene().getStylesheets().add(Objects.requireNonNull(getClass().getResource("/fr/stayze/passwordmanager/styles/" + css)).toExternalForm());
+    /**
+     * Render a scene from a resource and a css file
+     *
+     * @param resource
+     * @param css
+     * @param w
+     * @param h
+     */
+    protected void render(String resource, String css, int w, int h) {
+        try {
+            this._window.setScene(View.buildScene(resource, css, w, h));
+            this._window.show();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

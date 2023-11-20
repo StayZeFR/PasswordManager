@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="550" prefWidth="400" styleClass="main" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.stayze.passwordmanager.controllers.RegisterController">
+    <Label layoutX="71.0" layoutY="33.0" text="Password Manager" textFill="WHITE">
+        <font>
+            <Font name="Comic Sans MS" size="30.0" />
+        </font>
+    </Label>
+    <TextField fx:id="username" layoutX="59.0" layoutY="110.0" prefHeight="36.0" prefWidth="282.0" promptText="Nom d'utilisateur" styleClass="field">
+        <font>
+            <Font size="15.0" />
+        </font>
+    </TextField>
+    <PasswordField fx:id="password" layoutX="58.0" layoutY="168.0" prefHeight="36.0" prefWidth="282.0" promptText="Mot de passe" styleClass="field">
+        <font>
+            <Font size="15.0" />
+        </font>
+    </PasswordField>
+    <PasswordField fx:id="passwordConfirm" layoutX="58.0" layoutY="228.0" prefHeight="36.0" prefWidth="282.0" promptText="Confirmer mot de passe" styleClass="field">
+        <font>
+            <Font size="15.0" />
+        </font>
+    </PasswordField>
+    <RadioButton layoutX="58.0" layoutY="413.0" prefHeight="25.0" prefWidth="135.0" selected="true" styleClass="radio" text="Local">
+        <toggleGroup>
+            <ToggleGroup fx:id="group" />
+        </toggleGroup>
+        <font>
+            <Font size="15.0" />
+        </font>
+    </RadioButton>
+    <RadioButton layoutX="207.0" layoutY="413.0" prefHeight="25.0" prefWidth="135.0" styleClass="radio" text="Distant">
+        <toggleGroup>
+            <fx:reference source="group" />
+        </toggleGroup>
+        <font>
+            <Font size="15.0" />
+        </font>
+    </RadioButton>
+    <Button layoutX="126.0" layoutY="478.0" mnemonicParsing="false" onAction="#register" prefHeight="30.0" prefWidth="148.0" styleClass="register" text="Enregistrer" textFill="WHITE" />
+
+    <Line endX="282.0" layoutX="59.0" layoutY="146.0" styleClass="line" />
+    <Line endX="282.0" layoutX="58.0" layoutY="204.0" styleClass="line" />
+    <Line endX="282.0" layoutX="58.0" layoutY="264.0" styleClass="line" />
+   <PasswordField fx:id="secondPassword" layoutX="58.0" layoutY="284.0" prefHeight="36.0" prefWidth="282.0" promptText="Second mot de passe" styleClass="field">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </PasswordField>
+   <PasswordField fx:id="secondPasswordConfirm" layoutX="58.0" layoutY="339.0" prefHeight="36.0" prefWidth="282.0" promptText="Confirmer second mot de passe" styleClass="field">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </PasswordField>
+   <Line endX="282.0" layoutX="58.0" layoutY="320.0" styleClass="line" />
+   <Line endX="282.0" layoutX="58.0" layoutY="375.0" styleClass="line" />
+</Pane>

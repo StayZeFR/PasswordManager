@@ -1,0 +1,21 @@
+.main {
+    -fx-background-color: #04364A;
+}
+
+.field {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.line {
+    -fx-stroke: white;
+}
+
+.register {
+    -fx-background-color: #176B87;
+    -fx-text-fill: white;
+}
+
+.radio {
+    -fx-text-fill: white;
+}
